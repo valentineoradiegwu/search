@@ -32,7 +32,6 @@ func Find(key string) {
 		}
 
 		go func(matcher match.Matcher, feed *sources.Feed) {
-			//log.Println("Launching goroutine")
 			match.Match(matcher, feed, key, results)
 			wg.Done()
 		}(matcher, feed)
@@ -45,6 +44,6 @@ func Find(key string) {
 	}()
 
 	for res := range results {
-		log.Printf("%s: Content: %s", res.Field, res.Contents)
+		log.Printf("Field: %s \nContent: %s", res.Field, res.Contents)
 	}
 }
